@@ -12,20 +12,20 @@ public class GerenciaFrota {
         this.frota = frota;
     }
 
-    private void buscaCarro(String Placa){
-        Automovel aux = new Automovel(Placa);
-        Frota auxFrota = new Frota(aux, 0)
-        if (frota.contains(aux)) {
-            System.out.println("Elemento encontrado na lista.");
-        } else {
-            System.out.println("Elemento não encontrado na lista.");
-        }
-    }
-
-    private void alugaCarro(String Placa, int Quantidade){
+    private Frota buscaFrota(String Placa){
         Automovel aux = new Automovel(Placa);
         Frota auxFrota = new Frota(aux);
-        frota.add(aux);
+        for (Frota procura : frota) {
+            if (procura.equals(auxFrota)) {
+                return procura; // Retorna o objeto quando encontrado
+            }
+        }
+        return null;
+    }
+
+    private void alugaCarro(String Placa, String DataDeLocacao){
+        Frota auxFrota = buscaFrota(Placa);
+        auxFrota.setQuantidade(auxFrota.getQuantidade()-1);
     }
 
     private void removerCliente(String Placa){
