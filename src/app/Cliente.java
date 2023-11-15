@@ -28,4 +28,9 @@ public class Cliente {
     public void setSaldo(Double saldo) {
         Saldo = saldo;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente [CPF=" + CPF + ", Nome=" + Nome + ", Saldo=" + Saldo + "]";
+    }
 }
